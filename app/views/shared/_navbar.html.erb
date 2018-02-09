@@ -13,21 +13,27 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <% if current_user %>
-      <li class="nav-item">
-        <%= link_to "Log out", logout_path, class: 'nav-link text-primary' %>
-      </li>
-      <span class="navbar-text px-2 font-weight-bold">|</span>
-      <span class="navbar-text">
-        Logged in as <strong><%= current_user.username %></strong>.
-      </span>
+        <% if current_user.guest? %>
+          <li class="nav-item">
+            <%= link_to 'Become a member', signup_path, class: 'nav-link text-primary' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Log out", logout_path, class: 'nav-link text-primary' %>
+          </li>
+        <% end %>
+        <span class="navbar-text px-2 font-weight-bold">|</span>
+        <span class="navbar-text">
+          Logged in as <strong><%= current_user.name %></strong>.
+        </span>
       <% else %>
-      <li class="nav-item">
-        <%= link_to "Sign up", signup_path, class: 'nav-link text-primary' %>
-      </li>
-      <span class="navbar-text px-2 font-weight-bold">|</span>
-      <li class="nav-item">
-        <%= link_to "Log In", login_path, class: 'nav-link text-primary' %>
-      </li>
+        <li class="nav-item">
+          <%= link_to "Sign up", signup_path, class: 'nav-link text-primary' %>
+        </li>
+        <span class="navbar-text px-2 font-weight-bold">|</span>
+        <li class="nav-item">
+          <%= link_to "Log In", login_path, class: 'nav-link text-primary' %>
+        </li>
       <% end %>
     </ul>
   </div>
