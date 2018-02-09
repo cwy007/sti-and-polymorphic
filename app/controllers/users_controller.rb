@@ -4,13 +4,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
-    if user.save
+    @user = User.new(user_params)   # NOTE: cann't be user, must use @user because of render 'new'
+    if @user.save
       session[:user_id] = user.id
       flash[:notice] = 'signup successfully!'
       redirect_to root_path
     else
-      render 'new' 
+      render 'new'
     end
   end
 
