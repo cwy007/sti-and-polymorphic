@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def name
     guest ? 'GUEST' : username
   end
+
+  def move_to(user)
+    tasks.update_all(user_id: user.id)
+  end
 end
