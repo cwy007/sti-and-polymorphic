@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="http://railscasts.com/episodes/394-sti-and-polymorphic-associations?view=asciicast" target="_blank">
+    STI & Polymorphic
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to 'Home', root_path, class: 'nav-link' %>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <% if current_user %>
+      <li class="nav-item">
+        <%= link_to "Log out", logout_path, class: 'nav-link text-primary' %>
+      </li>
+      <span class="navbar-text px-2 font-weight-bold">|</span>
+      <span class="navbar-text">
+        Logged in as <strong><%= current_user.username %></strong>.
+      </span>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to "Sign up", signup_path, class: 'nav-link text-primary' %>
+      </li>
+      <span class="navbar-text px-2 font-weight-bold">|</span>
+      <li class="nav-item">
+        <%= link_to "Log In", login_path, class: 'nav-link text-primary' %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

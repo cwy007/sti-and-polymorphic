@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'welcome#index'
+  get 'signup', to: 'users#new'
+  get 'login',  to: 'sessions#new'
+  get 'logout', to: 'sessions#destroy'
+
+  resources :users, only: [:create]
+  resources :sessions, only: [:create]
+  resources :tasks
+  root to: 'tasks#index'
 end

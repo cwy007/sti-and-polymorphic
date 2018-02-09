@@ -1,0 +1,5 @@
+<%= simple_form_for Task.new, wrapper: :inline_form, html: { class: 'form-inline my-3' },
+  data: { remote: true }, authenticity_token: true  do |f| %>
+  <%= f.input :name, placeholder: 'task name', input_html: { class: 'mr-2' } %>
+  <%= f.submit "Add Task", class: 'btn btn-primary' %>
+<% end %>

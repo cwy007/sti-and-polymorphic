@@ -1,0 +1,4 @@
+<%= simple_form_for task, remote: true, :authenticity_token => true do |f| %>
+  <%= f.input_field :complete, inline_label: task.name %>
+  <%= link_to "(remove)", task, method: :delete, remote: true %>
+<% end %>

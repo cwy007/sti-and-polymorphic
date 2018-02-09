@@ -1,0 +1,11 @@
+$('#no-tasks').addClass('d-none');
+
+<% if @task.complete? %>
+  $('#js-complete-tasks').append('<%= j render @task %>');
+<% else %>
+  $('#js-incomplete-tasks').append('<%= j render @task %>');
+<% end %>
+
+$('#edit_task_<%= @task.id %>').submitOnCheck();
+
+$('#new_task #task_name').val('');
