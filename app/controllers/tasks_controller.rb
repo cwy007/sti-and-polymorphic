@@ -19,6 +19,13 @@ class TasksController < ApplicationController
   end
 
   def update
+    @task = current_user.tasks.find(params[:id])
+    @task.update_attributes!(task_params)
+
+    respond_to do |format|
+      format.html { redirect_to tasks_path }
+      format.js
+    end
   end
 
   def destroy
