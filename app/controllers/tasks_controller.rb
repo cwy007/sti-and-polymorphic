@@ -29,6 +29,13 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = current_user.tasks.find(params[:id])
+    @task.destroy
+
+    respond_to do |format|
+      format.html { redirect_to tasks_path }
+      format.js
+    end
   end
 
   private

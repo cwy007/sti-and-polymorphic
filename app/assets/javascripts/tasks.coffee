@@ -1,5 +1,5 @@
-jQuery ->
-  $('.edit_task label input[type=checkbox]').click ->
+jQuery.fn.submitOnCheck = ->
+  @find('input[type=checkbox]').click ->
     $.ajax
       url: $(this).parent('label').parent('form')[0].action
       headers:
@@ -9,3 +9,7 @@ jQuery ->
       data:
         'task[complete]': $(this).is(':checked')
         'authenticity_token': $(this).siblings('#authenticity_token').val()
+  return this
+
+jQuery ->
+  $('.edit_task').submitOnCheck()

@@ -6,9 +6,6 @@ $('#no-tasks').addClass('d-none');
   $('#js-incomplete-tasks').append('<%= j render @task %>');
 <% end %>
 
-$('#edit_task_<%= @task.id %>').find('input[type=checkbox]').click(function() {
-  $(this).parent('label').parent('form').submit();
-  console.log(this);
-});
+$('#edit_task_<%= @task.id %>').submitOnCheck();
 
 $('#new_task #task_name').val('');

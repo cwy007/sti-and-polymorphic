@@ -1,0 +1,5 @@
+$('#edit_task_<%= @task.id %>').remove();
+
+<% if current_user.tasks.all.count == 0 %>
+  $('#no-tasks').removeClass('d-none');
+<% end %>
