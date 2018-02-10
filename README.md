@@ -2,6 +2,8 @@
 
 http://railscasts.com/episodes/394-sti-and-polymorphic-associations
 
+> STI: have same attributes(columns) and different actions
+
 model
 ```ruby
 class User < ApplicationRecord
