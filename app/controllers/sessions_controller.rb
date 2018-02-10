@@ -3,9 +3,9 @@ class SessionsController < ApplicationController
   end
 
   def create
-    member = Member.find_by_username(params[:member][:username])
-    if member && member.authenticate(params[:member][:password])
-      session[:user_id] = member.id
+    profile = MemberProfile.find_by_username(params[:username])
+    if profile && profile.authenticate(params[:password])
+      session[:user_id] = profile.user.id
       redirect_to root_path, notice: 'logged in!'
     else
       flash.now.alert = "Name or password is invalid"

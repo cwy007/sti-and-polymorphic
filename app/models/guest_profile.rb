@@ -1,10 +1,13 @@
-class Guest < User
+class GuestProfile < ApplicationRecord
+  has_one :user, as: :profile, dependent: :destroy
+
   def guest?
     true
   end
 
-  def move_to(user)
-    tasks.update_all(user_id: user.id)
+  def become_member(member_profile)
+    user.profile = member_profile
+    user.save!
   end
 
   def name

@@ -1,4 +1,6 @@
-class Member < User
+class MemberProfile < ApplicationRecord
+  has_one :user, as: :profile, dependent: :destroy
+
   validates_presence_of :username, :email
   validates_uniqueness_of :username, allow_blank: true
 
@@ -17,10 +19,10 @@ class Member < User
   end
 
   def can_share_task?(task)
-    task.user_id == id
+    task.user_id == user.id
   end
 
   def send_password_reset
-    UserMailer.password_reset(self).deliver 
+    UserMailer.password_reset(self).deliver
   end
 end
